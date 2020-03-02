@@ -1,15 +1,15 @@
 ! Author: Lucas Marques Moreno
 ! Date: 26/02/20
 ! Description: An exercise 
-! to solve ODE with Euler's
-! method
+! to solve ODE with fortran
+! and python
 
 subroutine euler (y,f,x0,y0,h,xg)
 
     implicit none
     
-    real, external :: f ! add the function in the main program
-
+    external :: f ! add the function in the main program
+    real :: f
     real,intent(in) :: x0                  ! initial value of x
     real,intent(in) :: y0                  ! initial value of y
     real,intent(in) :: h                   ! interval of values of x
@@ -34,7 +34,8 @@ subroutine euler (y,f,x0,y0,h,xg)
 subroutine rk4(y,f,x0,y0,h,xg)
     implicit none
 
-    real, external :: f
+    external :: f
+    real :: f
     real,intent(in) :: x0                  ! initial value of x
     real,intent(in) :: y0                  ! initial value of y
     real,intent(in) :: h                   ! interval of values of x
@@ -59,7 +60,5 @@ subroutine rk4(y,f,x0,y0,h,xg)
         y = y+dy
      
     end do
-
-
 
     end subroutine rk4
