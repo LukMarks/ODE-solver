@@ -9,15 +9,15 @@ subroutine euler (y,f,x0,y0,h,xg)
     implicit none
     
     external :: f ! add the function in the main program
-    real :: f
-    real,intent(in) :: x0                  ! initial value of x
-    real,intent(in) :: y0                  ! initial value of y
-    real,intent(in) :: h                   ! interval of values of x
-    real,intent(in) :: xg                  ! x value for solution
+    double precision :: f
+    double precision,intent(in) :: x0                  ! initial value of x
+    double precision,intent(in) :: y0                  ! initial value of y
+    double precision,intent(in) :: h                   ! interval of values of x
+    double precision,intent(in) :: xg                  ! x value for solution
     
-    real,intent(out) :: y                  ! solved function value
+    double precision,intent(out) :: y                  ! solved function value
     
-    real :: x
+    double precision :: x
     integer ::n,i
     
     x = x0
@@ -35,15 +35,22 @@ subroutine rk4(y,f,x0,y0,h,xg)
     implicit none
 
     external :: f
-    real :: f
-    real,intent(in) :: x0                  ! initial value of x
-    real,intent(in) :: y0                  ! initial value of y
-    real,intent(in) :: h                   ! interval of values of x
-    real,intent(in) :: xg                  ! x value for solution
-    real :: k1,k2,k3,k4                    ! Runge Kutta constants
-    real :: x,dy                           ! variables do solve
+    double precision :: f
+
+
+    double precision,intent(in) :: x0                  ! initial value of x
+    double precision,intent(in) :: y0                  ! initial value of y
+    double precision,intent(in) :: h                   ! interval of values of x
+    double precision,intent(in) :: xg                  ! x value for solution
+    double precision :: k1,k2,k3,k4                    ! Runge Kutta constants
+    double precision :: x,dy                           ! variables do solve
     integer ::n,i
-    real,intent(out) :: y                  ! solved function value
+    double precision,intent(out) :: y                  ! solved function value
+
+
+    print *, x0,y0,h,xg
+
+
 
     n=int(ceiling((xg-x)/h))
 
