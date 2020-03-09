@@ -4,11 +4,10 @@
 # about how to use my ode solver
 
 import ode
-import callback as cb
 
 async def f(x,y_l):
     f = x+2*y_l
-    return
+    return float(f)
 
 g = lambda x, y_l : x+2*y_l 
 
