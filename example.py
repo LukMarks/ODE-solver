@@ -3,9 +3,10 @@
 # Description: A brief exemple
 # about how to use my ode solver
 
-import ode
+#import ode
+import ode2
 
-async def f(x,y_l):
+def f(x,y_l):
     f = x+2*y_l
     return float(f)
 
@@ -17,5 +18,5 @@ h =1e-6 # steps for the solution iterations
 x = tuple([1.]) # solution the ODE at that point in x 
 y = 0 # initial value for the solution
 #y_euler = ode.euler(x0,f,x0,y0_l,h,x)
-y_rk4 = ode.rk4(y,f,x0,y0_l,h,x)
+y_rk4 = ode2.rk4(y,f,x0,y0_l,h,x)
 print(y_rk4)
