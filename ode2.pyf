@@ -1,0 +1,46 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module euler__user__routines 
+    interface euler_user_interface 
+        function f(x,y) result (y) ! in :ode2:ode_solver.f90:euler:unknown_interface
+            intent(inout) f
+            double precision :: x
+            double precision intent(inout) :: y
+        end function f
+    end interface euler_user_interface
+end python module euler__user__routines
+python module rk4__user__routines 
+    interface rk4_user_interface 
+        function f(x,y) result (k1) ! in :ode2:ode_solver.f90:rk4:unknown_interface
+            double precision :: x
+            double precision intent(inout) :: y
+            double precision :: k1
+        end function f
+    end interface rk4_user_interface
+end python module rk4__user__routines
+python module ode2 ! in 
+    interface  ! in :ode2
+        subroutine euler(y,f,x0,y0,h,xg) ! in :ode2:ode_solver.f90
+            use euler__user__routines
+            double precision intent(inout) :: y
+            external f
+            double precision intent(in) :: x0
+            double precision intent(in) :: y0
+            double precision intent(in) :: h
+            double precision intent(in) :: xg
+        end subroutine euler
+        subroutine rk4(y,f,x0,y0,h,xg) ! in :ode2:ode_solver.f90
+            use rk4__user__routines
+            double precision intent(inout) :: y
+            external f
+            double precision intent(in) :: x0
+            double precision intent(in) :: y0
+            double precision intent(in) :: h
+            double precision intent(in) :: xg
+        end subroutine rk4
+    end interface 
+end python module ode2
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
